@@ -1,3 +1,4 @@
+from ast import Delete
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
@@ -5,6 +6,10 @@ from django.views.generic.detail import DetailView
 from .models import Venue, Festival
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 
 
 # Create your views here.
@@ -29,6 +34,7 @@ def assoc_venue(request, festival_id, venue_id):
     Festival.objects.get(id=festival_id).venue.add(venue_id)
     return redirect('detail', festival_id=festival_id)
 
+
 def signup(request):
     error_message = ''
     
@@ -46,3 +52,23 @@ def signup(request):
         'form': form,
         'error_message': error_message}
     return(render(request, 'registration/signup.html', context))
+
+class FestivalCreate(LoginRequiredMixin, CreateView):
+    model = Festival
+    fields = '__all__'
+    success_url = 'festivals/saved'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+
+class FestivalUpdate(LoginRequiredMixin, UpdateView):
+    model = Festival 
+    
+    fields = ['date', 'days']
+
+
+class FestivalDelete(LoginRequiredMixin, DeleteView):
+    model = Festival
+    success_url = 'festivals/saved'

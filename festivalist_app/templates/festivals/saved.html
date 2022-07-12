@@ -11,6 +11,10 @@
     </div>
   </a>
 </div>
+<div class="card-action">
+  <a href="{% url 'festival_update' festival.id %}">Edit</a>
+  <a href="{% url 'festival_delete' festival.id %}">Delete</a>
+</div>
 {% endfor %}
 
 {% endblock %}
