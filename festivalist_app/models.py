@@ -66,6 +66,9 @@ class Venue(models.Model):
     state = models.CharField(
         max_length=2,
         choices=STATES)
+    
+    def __str__(self):
+        return f"{self.name}"
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -73,3 +76,6 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ManyToManyField(Venue)
     date = models.DateField('festival_date')
+    
+    def __str__(self):
+        return f"{self.name}"

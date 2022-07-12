@@ -11,6 +11,12 @@ from django.contrib.auth.forms import UserCreationForm
 def home(request):
     return render(request, 'festivalist_app/home.html')
 
+def festival_index(request):
+    user = request.user
+    
+    if user: 
+        festivals = Festival.objects.filter(user=request.user)
+        return render(request, 'festivals/index.html', {'festivals': festivals})
 
 def signup(request):
     error_message = ''
