@@ -1,14 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Upcoming Festivals</h1>
+<h1>Your Upcoming Festivals</h1>
 
 {% for festival in festivals %}
 <div class="card">
+  <a href="/festivals/{{festival.id}}">
     <div class="card-content">
       <span class="card-title">{{ festival.name }}</span>
       <p>{{ festival.date}}</p>
     </div>
+  </a>
 </div>
 {% endfor %}
-    
-    {% endblock %}
+
+{% endblock %}

@@ -12,11 +12,22 @@ def home(request):
     return render(request, 'festivalist_app/home.html')
 
 def festival_index(request):
-    user = request.user
-    
-    if user: 
-        festivals = Festival.objects.filter(user=request.user)
+        festivals = Festival.objects.all()
         return render(request, 'festivals/index.html', {'festivals': festivals})
+   
+    
+def festival_saved(request):
+        festivals = Festival.objects.filter(user=request.user)
+        return render(request, 'festivals/saved.html', {'festivals': festivals})
+
+def festival_detail(request, festival_id):
+    festival = Festival.objects.get(id=festival_id)
+    return render(request, 'festivals/detail.html', {
+        'festival': festival })
+
+def assoc_venue(request, festival_id, venue_id):
+    Festival.objects.get(id=festival_id).venue.add(venue_id)
+    return redirect('detail', festival_id=festival_id)
 
 def signup(request):
     error_message = ''

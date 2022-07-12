@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User 
+from django.urls import reverse 
 # Create your models here.
 
 CAMPING = (
@@ -79,3 +80,6 @@ class Festival(models.Model):
     
     def __str__(self):
         return f"{self.name}"
+    
+    def get_absolute_url(self):
+        return reverse('index', kwargs={'festival_id': self.id})
