@@ -76,7 +76,7 @@ class Photo(models.Model):
     photo = models.ImageField(blank=False)
     
     def __str__(self):
-        return f"(Photo for {self.id} @{self.url}"
+        return f"(Photo for {self.id} @{self}"
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
