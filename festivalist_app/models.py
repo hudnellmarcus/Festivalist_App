@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+from django.forms import ImageField 
 from django.urls import reverse 
 # Create your models here.
 
@@ -72,6 +73,7 @@ class Venue(models.Model):
         return f"{self.name}"
 class Photo(models.Model):
     url = models.CharField(max_length=200)
+    photo = models.ImageField(blank=False)
     
     def __str__(self):
         return f"(Photo for {self.id} @{self.url}"
