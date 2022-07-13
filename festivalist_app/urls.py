@@ -9,5 +9,6 @@ urlpatterns = [
     path('festivals/create/', views.FestivalCreate.as_view(), name = 'festival_create'),
     path('festivals/<int:pk>/update/', views.FestivalUpdate.as_view(), name='festival_update'),
     path('festivals/<int:pk>/delete/', views.FestivalDelete.as_view(), name='festival_delete'),
+    path('festivals/<int:festival_id>/add_photo/', views.add_photo, name='add_photo'),
     path('accounts/signup/', views.signup, name='signup'),
 ]
