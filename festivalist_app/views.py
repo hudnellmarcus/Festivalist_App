@@ -31,13 +31,13 @@ def festival_detail(request, festival_id):
     return render(request, 'festivals/detail.html', {
         'festival': festival })
 
-def assoc_venue(request, festival_id, venue_id):
-    Festival.objects.get(id=festival_id).venue.add(venue_id)
-    return redirect('detail', festival_id=festival_id)
+# def assoc_venue(request, festival_id, venue_id):
+#     Festival.objects.get(id=festival_id).venue.add(venue_id)
+#     return redirect('detail', festival_id=festival_id)
 
-def assoc_venue_delete(request, festival_id, venue_id):
-    Festival.objects.get(id=festival_id).venue.remove(venue_id)
-    return redirect('detail', festival_id=festival_id)
+# def assoc_venue_delete(request, festival_id, venue_id):
+#     Festival.objects.get(id=festival_id).venue.remove(venue_id)
+#     return redirect('detail', festival_id=festival_id)
 
 
 def add_photo(request, festival_id):
