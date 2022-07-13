@@ -83,7 +83,7 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
-    photo = models.ForeignKey(Photo, default=None, on_delete=models.CASCADE)
+    photo = models.ForeignKey(Photo, blank=True, on_delete=models.CASCADE)
     
     
     def __str__(self):
