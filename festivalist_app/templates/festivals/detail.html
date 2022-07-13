@@ -10,9 +10,7 @@
       <div class="card-content">
         <h4>{{festival.venue.name }}</h4>
         <h5>{{ festival.date }}</h5>
-        {% for venue in festival.venue.all %}
-        <h5>{{ venue }}</h5>
-    <p>{{venue.city}}, {{ venue.state }}<p>
+    <p>{{festival.venue.city}}, {{ festival.venue.state }}<p>
       {% endfor %}
     </div>
     <div class="card-action">
