@@ -73,7 +73,7 @@ class Venue(models.Model):
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     days = models.IntegerField()
     venue = models.ManyToManyField(Venue)
     date = models.DateField('festival_date')
