@@ -103,3 +103,7 @@ class FestivalUpdate(LoginRequiredMixin, UpdateView):
 class FestivalDelete(LoginRequiredMixin, DeleteView):
     model = Festival
     success_url = 'festivals/saved'
+    
+class PhotoDelete(DeleteView):
+    model = Photo
+    success_url = 'festivals/saved'
