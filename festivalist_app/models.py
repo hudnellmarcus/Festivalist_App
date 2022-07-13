@@ -71,6 +71,11 @@ class Venue(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return f"(Photo for {self.festival_id} @{self.url}"
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -78,6 +83,7 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
+    photo = models.ManyToManyField(Photo)
 
     
     
