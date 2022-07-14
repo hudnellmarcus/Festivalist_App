@@ -127,3 +127,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import django_heroku
 django_heroku.settings(locals())
+
+AWS_ACCESS_KEY_ID = "AKIAQO3MTPDKZ7MZ4U62"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "festivalist-app"
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = "us-west-1"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' 

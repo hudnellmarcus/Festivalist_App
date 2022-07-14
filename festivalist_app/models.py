@@ -72,11 +72,7 @@ class Venue(models.Model):
     
     def __str__(self):
         return f"{self.name}"
-class Photo(models.Model):
-    photo = models.ImageField(blank=False)
-    
-    def __str__(self):
-        return f"(Photo {self.id}"
+
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -84,7 +80,7 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+
 
     
     
@@ -93,6 +89,9 @@ class Festival(models.Model):
     
     def get_absolute_url(self):
         return reverse('index', kwargs={'festival_id': self.id})
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'festival_id': self.id})
 
 
     
