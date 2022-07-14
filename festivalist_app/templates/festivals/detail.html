@@ -4,12 +4,10 @@
   <div class="col s12 m7">
     <div class="card">
    
+      <span class="card-title">{{ festival.name }}</span>
       <div class="card-image">
-        {% for photo in festival.photo_set.all %} 
-        <img src="{{photo.url}}">
-      {% endfor %}
-        <span class="card-title">{{ festival.name }}</span>
-      </div>
+        <img src="{{festival.photo.url}}">
+    </div>
       <div class="card-content">
         <h4>{{festival.venue.name }}</h4>
         <h5>{{ festival.date }}</h5>
@@ -32,5 +30,4 @@ class="card-panel"
 <br /><br />
 <input type="submit" class="btn" value="Upload Photo" />
 </form>
-
 {% endblock%}

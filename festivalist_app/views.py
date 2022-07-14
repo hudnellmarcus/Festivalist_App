@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid, boto3
+from .forms import FestivalForm, VenueForm
 
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'festivalist-app'
@@ -84,9 +85,20 @@ def signup(request):
         'error_message': error_message}
     return(render(request, 'registration/signup.html', context))
 
+def add_venue(request, festival_id):
+    form = VenueForm(request.POST)
+    
+    if form.is_valid():
+        new_venue = form.save(commit=False)
+        new_venue.festival_id = festival_id
+        new_venue.save()
+        
+    return redirect('saved', festival_id=festival_id)
+
+
 class FestivalCreate(LoginRequiredMixin, CreateView):
     model = Festival
-    fields = '__all__'
+    fields = ['name', 'days', 'venue', 'date', 'photo']
     success_url = 'festivals/saved'
     
     def form_valid(self, form):
@@ -97,10 +109,22 @@ class FestivalCreate(LoginRequiredMixin, CreateView):
 class FestivalUpdate(LoginRequiredMixin, UpdateView):
     model = Festival 
     
-    fields = ['date', 'days']
+    fields = '__all__'
 
 
 class FestivalDelete(LoginRequiredMixin, DeleteView):
     model = Festival
     success_url = 'festivals/saved'
     
+class VenueCreate(LoginRequiredMixin, CreateView):
+    model = Venue
+    fields = '__all__'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+class VenueDetail(LoginRequiredMixin, DetailView):
+    model = Venue
+    template_name = 'venues/detail.html'
+ 

@@ -32,22 +32,22 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Logout</a></li>
             <li><a href="{% url 'saved' %}">Your Festivals</a></li>
-            {% comment %}
             <li><a href="{% url 'festival_create' %}">Add a Festival</a></li>
-            {% endcomment %} {% comment %}
-            <li><a href="{% url 'index' %}">View All My Cats </a></li>
-            {% endcomment %} {% else %}
-            <li><a href="{% url 'index' %}">Upcoming</a></li>
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">All Rights Reserved, © 2022 Festivalist</div>
-    </footer>
-  </body>
+            <li><a href="{% url 'venue_create' %}">Add a Venue </a></li>
+            {% else %}
+           <li><a href="{% url 'index' %}">Upcoming</a></li>
+           <li><a href="{% url 'login' %}">Login</a></li>
+           <li><a href="{% url 'signup' %}">Sign Up</a></li>
+           {% endif %}
+         </ul>
+       </div>
+     </nav>
+   </header>
+   <main class="container">{% block content %} {% endblock %}</main>
+   <footer class="page-footer">
+     <div class="right">All Rights Reserved, © 2022 Festivalist</div>
+   </footer>
+ </body>
 </html>
+           
+          

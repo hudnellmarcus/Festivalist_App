@@ -78,7 +78,8 @@ class Venue(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-
+    def get_absolute_url(self):
+     return reverse('venue_detail', kwargs={'pk': self.id})
 
 class Festival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -97,8 +98,8 @@ class Festival(models.Model):
     def get_absolute_url(self):
         return reverse('index', kwargs={'festival_id': self.id})
     
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'festival_id': self.id})
+    # def get_absolute_url(self):
+    #     return reverse('detail', kwargs={'festival_id': self.id})
 
 
     
