@@ -48,7 +48,10 @@ def add_photo(request, festival_id):
     #use conditional logic to determine if file is present
     if photo_file:
     #if its present, we will create a reference to the boto3 client
-        s3 = boto3.client('s3')
+        s3 = boto3.client('s3', 
+                          region_name='us-west-1', 
+                          aws_access_key_id='AKIAQO3MTPDKZ7MZ4U62', 
+                          aws_secret_access_key='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')
         #create a unique id for each photo file 
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]#this last block cuts off everything before the . in the filename
         #upload the photo file to aws s3
