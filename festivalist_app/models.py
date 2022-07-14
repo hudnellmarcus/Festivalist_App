@@ -1,7 +1,8 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse 
+from django.urls import reverse
+from pkg_resources import require 
 # Create your models here.
 
 CAMPING = (
@@ -87,13 +88,14 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    photo = models.ForeignKey(Photo, blank=True, on_delete=models.CASCADE)
 
 
     
     
     def __str__(self):
         return f"{self.name}"
+
     
     def get_absolute_url(self):
         return reverse('index', kwargs={'festival_id': self.id})
