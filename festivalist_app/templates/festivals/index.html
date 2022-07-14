@@ -10,12 +10,12 @@
         {% for photo in festival.photo_set.all %}
         <img src="{{ photo.url }}">
         {% endfor %}
-        <span class="card-title">Card Title</span>
+        <span class="card-title">{{festival.name}}</span>
       </div>
     </div>
   </div>
 </div>
-{% endfor %}
+{% endfor%}
 
 
     {% endblock %}
