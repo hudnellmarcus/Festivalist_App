@@ -23,11 +23,12 @@ def festival_index(request):
         festivals = Festival.objects.all()
         return render(request, 'festivals/index.html', {'festivals': festivals})
    
-    
+@login_required  
 def festival_saved(request):
         festivals = Festival.objects.filter(user=request.user)
         return render(request, 'festivals/saved.html', {'festivals': festivals})
 
+@login_required
 def festival_detail(request, festival_id):
     festival = Festival.objects.get(id=festival_id)
     return render(request, 'festivals/detail.html', {
@@ -41,7 +42,7 @@ def festival_detail(request, festival_id):
 #     Festival.objects.get(id=festival_id).venue.remove(venue_id)
 #     return redirect('detail', festival_id=festival_id)
 
-
+@login_required
 def add_photo(request, festival_id):
     #attempt to collect the photo file data
     photo_file = request.FILES.get('photo-file', None)
@@ -89,6 +90,7 @@ def signup(request):
         'error_message': error_message}
     return(render(request, 'registration/signup.html', context))
 
+@login_required
 def add_venue(request, festival_id):
     form = VenueForm(request.POST)
     
