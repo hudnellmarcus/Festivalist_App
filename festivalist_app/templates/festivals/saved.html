@@ -3,18 +3,26 @@
 <h1>Your Upcoming Festivals</h1>
 
 {% for festival in festivals %}
-<div class="card">
-  <a href="/festivals/{{festival.id}}">
-    <div class="card-content">
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card">
       <span class="card-title">{{ festival.name }}</span>
-      <p>{{ festival.date}}</p>
+      <a href="/festivals/{{festival.id}}">
+        <div class="card-image">
+          {% for photo in festival.photo_set.all %}
+        <img src="{{ photo.url }}">
+        {% endfor %}
+        <div class="card-content">
+          <p>{{ festival.date}}</p>
+        </div>
+      </a>
+      <div class="card-action">
+        <a href="{% url 'festival_update' festival.id %}">Edit</a>
+        <a href="{% url 'festival_delete' festival.id %}">Delete</a>
     </div>
-  </a>
+    </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
-<div class="card-action">
-  <a href="{% url 'festival_update' festival.id %}">Edit</a>
-  <a href="{% url 'festival_delete' festival.id %}">Delete</a>
-</div>
-{% endfor %}
-
-{% endblock %}
+ {% endblock %}
