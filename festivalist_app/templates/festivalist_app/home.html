@@ -1,8 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Welcome to Festivalist</h1>
+{% if user.is_authenticated%}
+
+<a href="{% url 'saved' %}"><h3>Click Here to View Your Upcoming Festivals</h3> </a>
+
+{% else %}
 
 <a href="{% url 'login' %}"><h3>Login</h3></a>
 <a href="{% url 'signup' %}"><h3>Sign Up</h3></a>
 
+{% endif %}
 {% endblock %}
