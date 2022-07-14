@@ -95,11 +95,9 @@ class Festival(models.Model):
         return reverse('detail', kwargs={'festival_id': self.id})
 
 class Photo(models.Model):
-    photo = models.ImageField( default="", blank=True, max_length=200)
-    photo_name = models.CharField(max_length=50)
+    url = models.CharField(max_length=200)
     festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
     
-    def __str__(self):
-        return {self.festival}
+ 
 
     
