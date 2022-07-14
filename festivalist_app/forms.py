@@ -1,11 +1,11 @@
 from django.forms import ModelForm
-from .models import Festival, Venue, Photo
+from .models import Festival, Venue
 
 class FestivalForm(ModelForm):
     
     class Meta:
         model = Festival
-        fields = ['name', 'days', 'venue', 'date', 'photo']
+        fields = ['name', 'days', 'venue', 'date']
         
 class VenueForm(ModelForm):
     
@@ -13,9 +13,9 @@ class VenueForm(ModelForm):
         model = Venue
         fields = '__all__'
         
-class PhotoForm(ModelForm):
+# class PhotoForm(ModelForm):
     
-    class Meta:
-        model = Photo
-        fields = '__all__'
+#     class Meta:
+#         model = Photo
+#         fields = '__all__'
         

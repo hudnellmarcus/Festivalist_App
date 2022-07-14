@@ -3,13 +3,13 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from .models import Venue, Festival, Photo
+from .models import Venue, Festival
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid, boto3
-from .forms import FestivalForm, VenueForm, PhotoForm
+from .forms import FestivalForm, VenueForm
 
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'festivalist-app'

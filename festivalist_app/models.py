@@ -2,7 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from pkg_resources import require 
+
 # Create your models here.
 
 CAMPING = (
@@ -63,11 +63,11 @@ STATES = (
     ('WY', 'Wyoming'),
 )
 
-class Photo(models.Model):
-    url = models.CharField(blank=True, max_length=200)
+# class Photo(models.Model):
+#     url = models.CharField(blank=True, max_length=200)
     
-    def __str__(self):
-        return f"photo {self.id}"
+#     def __str__(self):
+#         return f"photo {self.id}"
 
 class Venue(models.Model): 
     name = models.CharField(max_length=150)
@@ -88,7 +88,7 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
-    photo = models.ForeignKey(Photo, blank=True, on_delete=models.CASCADE)
+    # photo = models.ForeignKey(Photo, blank=True, on_delete=models.CASCADE)
 
 
     
