@@ -64,7 +64,7 @@ STATES = (
 )
 
 class Photo(models.Model):
-    url = models.CharField(max_length=200)
+    url = models.CharField(blank=True, max_length=200)
     
     def __str__(self):
         return f"photo {self.id}"
