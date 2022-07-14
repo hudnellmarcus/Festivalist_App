@@ -5,8 +5,8 @@
     <div class="card">
    
       <div class="card-image">
-        {% for festival in photo.photo_set.all %} 
-        <img src="{{festival.photo.url}}">
+        {% for photo in festival.photo_set.all %} 
+        <img src="{{photo.url}}">
       {% endfor %}
         <span class="card-title">{{ festival.name }}</span>
       </div>

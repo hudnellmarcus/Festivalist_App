@@ -86,6 +86,7 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
 
 
     

@@ -31,13 +31,13 @@ def festival_detail(request, festival_id):
     return render(request, 'festivals/detail.html', {
         'festival': festival })
 
-# # def assoc_venue(request, festival_id, venue_id):
-# #     Festival.objects.get(id=festival_id).venue.add(venue_id)
-# #     return redirect('detail', festival_id=festival_id)
+# def assoc_venue(request, festival_id, venue_id):
+#     Festival.objects.get(id=festival_id).venue.add(venue_id)
+#     return redirect('detail', festival_id=festival_id)
 
-# # def assoc_venue_delete(request, festival_id, venue_id):
-# #     Festival.objects.get(id=festival_id).venue.remove(venue_id)
-# #     return redirect('detail', festival_id=festival_id)
+# def assoc_venue_delete(request, festival_id, venue_id):
+#     Festival.objects.get(id=festival_id).venue.remove(venue_id)
+#     return redirect('detail', festival_id=festival_id)
 
 
 def add_photo(request, festival_id):
@@ -54,7 +54,7 @@ def add_photo(request, festival_id):
         #if successful
             s3.upload_fileobj(photo_file, BUCKET, key)
         #take the exchanged url and save it to the database 
-            url = f"{BUCKET}{S3_BASE_URL}/{key}"
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
             # 1) create the photo instance with photo model and provide cat_id as foreign key value
             photo = Photo(url=url, festival_id=festival_id)
             # 2) save the photo instance to the database 
