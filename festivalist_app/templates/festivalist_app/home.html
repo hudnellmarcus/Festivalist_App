@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Welcome to the Homepage</h1>
+<h1>Welcome to Festivalist</h1>
 
-
+<a href="{% url 'login' %}"><h3>Login</h3></a>
+<a href="{% url 'signup' %}"><h3>Sign Up</h3></a>
 
 {% endblock %}

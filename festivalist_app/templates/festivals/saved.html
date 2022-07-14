@@ -3,8 +3,8 @@
 <h1>Your Upcoming Festivals</h1>
 
 {% for festival in festivals %}
-<div class="row">
-  <div class="col s12 m7">
+<div class="row" "center-align">
+  <div class="col s6 m7">
     <div class="card">
       <span class="card-title">{{ festival.name }}</span>
       <a href="/festivals/{{festival.id}}">
