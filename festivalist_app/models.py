@@ -89,10 +89,10 @@ class Festival(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('add_festival', kwargs={'festival_id': self.id})
+        return reverse('index', kwargs={'festival_id': self.id})
     
-    # def get_absolute_url(self):
-    #     return reverse('detail', kwargs={'festival_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'festival_id': self.id})
 
 class Photo(models.Model):
     photo = models.ImageField( default="", blank=True, max_length=200)
@@ -100,6 +100,6 @@ class Photo(models.Model):
     festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
     
     def __str__(self):
-        return {self.photo_name}
+        return {self.festival}
 
     
