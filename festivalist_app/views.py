@@ -1,4 +1,5 @@
 from ast import Delete
+from audioop import reverse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
@@ -97,9 +98,10 @@ def add_venue(request, festival_id):
 
 
 
+
 class FestivalCreate(LoginRequiredMixin, CreateView):
-    model = Festival
-    fields = ['name', 'days', 'venue', 'date', 'image']
+    model = Festival, Photo
+    fields = '__all__'
     success_url = 'festivals/saved'
     
     def form_valid(self, form):

@@ -63,11 +63,6 @@ STATES = (
     ('WY', 'Wyoming'),
 )
 
-class Photo(models.Model):
-    image = models.ImageField(max_length=200)
-    
-    def __str__(self):
-        return f"photo {self.id}"
 
 class Venue(models.Model): 
     name = models.CharField(max_length=150)
@@ -88,20 +83,23 @@ class Festival(models.Model):
     days = models.IntegerField()
     venue = models.ForeignKey(Venue, default=None, on_delete=models.CASCADE)
     date = models.DateField('festival_date')
-    photo = models.ForeignKey(Photo, blank=True, on_delete=models.CASCADE)
-
-
-    
     
     def __str__(self):
         return f"{self.name}"
 
     
     def get_absolute_url(self):
-        return reverse('index', kwargs={'festival_id': self.id})
+        return reverse('add_festival', kwargs={'festival_id': self.id})
     
     # def get_absolute_url(self):
     #     return reverse('detail', kwargs={'festival_id': self.id})
 
+class Photo(models.Model):
+    photo = models.ImageField( default="", blank=True, max_length=200)
+    photo_name = models.CharField(max_length=50)
+    festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return {self.photo_name}
 
     
