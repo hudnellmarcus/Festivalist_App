@@ -99,7 +99,7 @@ def add_venue(request, festival_id):
 
 class FestivalCreate(LoginRequiredMixin, CreateView):
     model = Festival
-    fields = ['name', 'days', 'venue', 'date', 'photo']
+    fields = ['name', 'days', 'venue', 'date', 'image']
     success_url = 'festivals/saved'
     
     def form_valid(self, form):
