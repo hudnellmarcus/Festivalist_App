@@ -63,11 +63,11 @@ STATES = (
     ('WY', 'Wyoming'),
 )
 
-# class Photo(models.Model):
-#     url = models.CharField(blank=True, max_length=200)
+class Photo(models.Model):
+    image = models.ImageField(max_length=200)
     
-#     def __str__(self):
-#         return f"photo {self.id}"
+    def __str__(self):
+        return f"photo {self.id}"
 
 class Venue(models.Model): 
     name = models.CharField(max_length=150)
