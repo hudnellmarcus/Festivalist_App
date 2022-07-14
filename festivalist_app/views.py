@@ -100,7 +100,7 @@ def add_venue(request, festival_id):
 
 
 class FestivalCreate(LoginRequiredMixin, CreateView):
-    model = Festival, Photo
+    model = Festival
     fields = '__all__'
     success_url = 'festivals/saved'
     
